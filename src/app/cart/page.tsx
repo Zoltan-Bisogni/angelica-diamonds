@@ -37,7 +37,7 @@ export default function CartPage() {
     setIsProcessing(true);
 
     try {
-      console.log('Inviando richiesta all\'API...');
+      console.log("Inviando richiesta all'API...");
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: {
@@ -50,7 +50,7 @@ export default function CartPage() {
       });
 
       console.log('Risposta ricevuta:', response.status);
-      
+
       if (!response.ok) {
         const errorData = await response.text();
         console.error('Errore response:', errorData);
@@ -83,7 +83,8 @@ export default function CartPage() {
       }
     } catch (error) {
       console.error('Errore nel checkout:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Errore sconosciuto';
+      const errorMessage =
+        error instanceof Error ? error.message : 'Errore sconosciuto';
       alert(`Si è verificato un errore: ${errorMessage}. Riprova più tardi.`);
     } finally {
       setIsProcessing(false);
@@ -215,7 +216,7 @@ export default function CartPage() {
                               {formatPrice(item.price * item.quantity)}
                             </div>
                             <div className='text-sm text-darkBrown/50'>
-                              {formatPrice(item.price)} 
+                              {formatPrice(item.price)}
                             </div>
                           </div>
 
@@ -384,7 +385,7 @@ export default function CartPage() {
         <div className='container mx-auto px-4'>
           <div className='flex flex-col md:flex-row justify-between items-center'>
             <div className='text-2xl font-bold tracking-wider mb-4 md:mb-0'>
-              ANGELICA'S DIAMONDS
+              ANGELICA&apos;S DIAMONDS
             </div>
             <div className='flex space-x-8 text-sm text-darkBrown/70'>
               <a href='#' className='hover:text-darkBrown transition-colors'>
@@ -399,7 +400,7 @@ export default function CartPage() {
             </div>
           </div>
           <div className='text-center mt-8 text-darkBrown/70 text-sm'>
-            © 2024 Angelica's Diamonds. All rights reserved.
+            © 2024 Angelica&apos;s Diamonds. All rights reserved.
           </div>
         </div>
       </footer>

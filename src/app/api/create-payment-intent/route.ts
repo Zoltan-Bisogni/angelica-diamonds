@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     // Creare Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: items.map((item: any) => {
+      line_items: items.map((item: { name: string; description?: string; category: string; image?: string; price: number; quantity: number }) => {
         // Costruisci URL assoluto per l'immagine
         const imageUrl = item.image
           ? item.image.startsWith('http')
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       success_url: `${request.headers.get('origin')}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${request.headers.get('origin')}/cart`,
       metadata: {
-        itemNames: items.map(item => item.name).join(", ")
+        itemNames: items.map((item: { name: string }) => item.name).join(", ")
       },
       shipping_address_collection: {
         allowed_countries: ['IT', 'US', 'GB', 'FR', 'DE', 'ES'],

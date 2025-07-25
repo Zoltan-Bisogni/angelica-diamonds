@@ -18,7 +18,7 @@ export default function BagsSection({ className = '' }: BagsSectionProps) {
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
 
-  const { addItem, toggleCart } = useCartStore();
+  const { addItem } = useCartStore();
 
   const handleBagClick = (bag: Bag) => {
     setSelectedBag(bag);
